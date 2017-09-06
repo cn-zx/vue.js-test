@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>class熟悉</title>
+	<style>
+		.red1{
+			color: red;
+		}
+		.blue1{
+			background: blue;
+		}
+		.red{
+			color: orange;
+		}
+		.blue{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<strong :class="[red2,blue2]">我是文字...</strong>
+	</div>
+	<div class="box1">
+		<strong v-bind:class="{red:true,blue:false}">我是文字1....</strong>
+	</div>
+	<div class="box2">
+		<strong v-bind:class="{red:a,blue:b}">我是文字2...</strong>
+	</div>
+	<div class="box3">
+		<strong v-bind:class="json">我是文字3...</strong>
+	</div>
+	<div class="box4">
+		<strong v-bind:class="json1">我是文字4...</strong>
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script type="text/javascript">
+	new Vue({
+		el:'.box',
+		data:{
+			red2:'red1',
+			blue2:'blue1'
+		}
+	});
+	new Vue({
+		el:'.box1',
+		data:{
+
+		}
+	});
+	new Vue({
+		el:'.box2',
+		data:{
+			a:true,
+			b:false
+		}
+	});
+	new Vue({
+		el:'.box3',
+		data:{
+			json:{
+				red:true,
+				blue:true
+			}
+		}
+	});
+	new Vue({
+		el:'.box4',
+		data:{
+			json1:{
+				red:'red1',
+				blue:'blue1'
+			}
+		}
+	})
+</script>

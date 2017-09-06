@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue指令</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+    	.box{
+    		border: 1px solid red;
+    	}
+    	input{
+    		border: 1px solid orange;
+    	}
+    </style>
+</head>
+<body>
+	<div class="box">
+		<input type="text" placeholder="请输入" v-model="msg">
+		<p>{{msg}}</p>
+		<p v-bind:title="msg1">123</p>
+		<ul>
+			<li v-for='todo in todos'>{{todo.text}}</li>
+		</ul>
+		<button v-on:click='removemessage'>点击</button>
+	</div>
+	<div class="box1">
+		<input type="text" v-model='newTodo' v-on:keyup.enter='addTo'>
+		<li v-for='todo in todos'>
+			<span>{{todo.text}}</span>
+			<button v-on:click='removeTodo($index)'>x</button>
+		</li>
+	</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload=function() {
+		
+		new Vue({
+			el:'.box1',
+			data:{
+				newTodo:'',
+				todos:[
+					{text:'add to li'}
+				]
+			},
+			methods:{
+				addTo:function () {
+					var text = this.newTodo.trim();
+					if (text) {
+						this.todos.push({text:text});
+						this.newTodo = '';
+					}
+				},
+				removeTodo:function (index) {
+					this.todos.splice(index,1);
+				}
+			}
+		});
+
+		new Vue({
+			el:'.box',
+			data:{
+				msg:'nidaye',
+				// msg1:'页面加载于'＋ new Data(),
+				todos:[
+					{text:'锦瑟无端五十弦'},
+					{text:'一弦一柱思华年'},
+					{text:'庄生晓梦迷蝴蝶'},
+					{text:'望帝春心托杜鹃'}
+					]
+			},
+			methods:{
+				removemessage:function () {
+					this.msg=this.msg.split('').reverse().join();
+					console.log(this);
+					console.log(this.data);
+				}
+			}
+		});
+	}
+</script>

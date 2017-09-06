@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue指令</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+    	.box{
+    		border: 1px solid red;
+    	}
+    	input{
+    		border: 1px solid orange;
+    	}
+    </style>
+</head>
+<body>
+	<div class="box" v-bind:class='[classA,classB]'>
+		<input type="text" v-model='firstname'>
+		<input type="text" v-model='lastname'>
+		<p>{{fullname}}</p>
+	</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload=function() {
+		
+		var vm = new Vue({
+			el:'.box',
+			data:{
+				firstname:'first',
+				lastname:'last',
+				fullname:'full',
+				classA:'z-1',
+				classB:'z-2'				
+			},
+			computed:{
+				// fullname:function () {
+				// 	return this.firstname + '' + this.lastname;
+				// }
+				fullname:{
+					get:function () {
+						return this.firstname + '' + this.lastname;
+					},
+					set:function (newValue) {
+						var names = newValue.split('');
+						this.firstname = names[0];
+						this.lastname = names[names.length - 1];
+					}
+				}
+			}
+		});
+
+		vm.fullname = 'zhuoxiang';
+
+		// vm.$watch('firstname',function (val) {
+		// 	this.fullname = val + '' + this.lastname;
+		// });
+		// vm.$watch('lastname',function (val) {
+		// 	this.fullname = this.firstname + '' + val;
+		// })
+	}
+</script>

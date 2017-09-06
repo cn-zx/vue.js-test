@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <!-- // <script src="vue.js"></script> -->
+    <script src="http://unpkg.com/vue/dist/vue.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var vm = new Vue({
+                el:'#box',
+                methods:{
+                    show:function(){
+                        alert(1);
+                    },
+                    show1:function(){
+                        alert(2);
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="按钮" @contextmenu="show()"> 
+        <input type="button" value="按钮1" @contextmenu.prevent="show1()"> 
+
+        <p>//按钮右击点下去会依次出现 弹窗 1， 还有右击的默认菜单</p>
+        <p>//按钮1右击只出现 弹窗 2</p>
+    </div>
+</body>
+</html>

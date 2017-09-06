@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue指令</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+    	.box{
+    		border: 1px solid red;
+    	}
+    	input{
+    		border: 1px solid orange;
+    	}
+    </style>
+</head>
+<body>
+	<div class="box">
+		<input type="checkbox" id="jack" value="Jack" v-model="checkednames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="John" v-model="checkednames">
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="Mike" v-model="checkednames">
+		<label for="mike">Mike</label> <br>
+		<span>checked names: {{checkednames | json}}</span> <br>
+		<br>
+		<input type="radio" id="one" value="one" v-model="picked">	
+		<label for="one">One</label><br>
+		<input type="radio" id="two" value="two" v-model="picked">
+		<label for="two">Two</label><br>
+		<span>picked:{{picked | json}}</span>
+		<br><br>
+
+		<select v-model="selected" multiple>
+			<option selected>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<span>selected: {{selected | json}}</span> 
+		<br><br>
+		<!-- <select v-model="selected">
+	  		<option selected>A</option>
+	  		<option>B</option>
+	  		<option>C</option>
+		</select>
+		<span>Selected: {{ selected }}</span> -->
+	</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload=function() {
+		
+		new Vue({
+			el:'.box',
+			data:{
+				newTodo:'',
+				checkednames:[],
+				picked:[]
+			}
+		});
+	}
+</script>

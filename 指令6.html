@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue指令</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+    	.box{
+    		border: 1px solid red;
+    	}
+    	input{
+    		border: 1px solid orange;
+    	}
+    </style>
+</head>
+<body>
+	<div class="box">
+		<input type="checkbox" v-model='checked' id="checkbox">
+		<label for="checkbox">{{checked}}</label>
+		<!-- <input type="checkbox" id="checkbox" v-model="checked"> -->
+		<!-- <label for="checkbox">{{ checked }}</label> -->
+	</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	// var str = 'baidu dd';
+	// document.write(str.link('http://baidu.com'));
+	window.onload=function() {
+		
+		new Vue({
+			el:'.box',
+			data:{
+				newTodo:'',
+				todos:[
+					{text:'add to li'}
+				]
+			}
+		});
+	}
+</script>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>深入事件</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<input type="text" value="" v-on:keydown="show" placeholder="你大爷">
+	</div>
+	<div class="box2">
+		<input type="text" value="" v-on:keydown="show($event)">
+	</div>
+	<div class="box3">
+		<input type="text" value="" v-on:keyup="show($event)">
+	</div>
+	<div class="box4">
+		<input type="text" value="" v-on:keyup="show($event)">
+	</div>
+	<div class="box5">
+		<input type="text" value="" v-on:keyup.enter="show">
+	</div>
+	<div class="box6">
+		<input type="text" value="" v-on:keyup.left="show">
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script type="text/javascript">
+	window.onload=function () {
+		new Vue({
+			el:'.box6',
+			data:{},
+			methods:{
+				show:function () {
+					alert(12);
+				}
+			}
+		});                                  
+		new Vue({
+			el:'.box5',
+			data:{},
+			methods:{
+				show:function (event) {
+					alert('回车');				
+				}
+			}
+		});
+		new Vue({
+			el:'.box4',
+			data:{},
+			methods:{
+				show:function (event) {
+					if (event.keyCode == 13) {
+						alert('惠车');
+					}
+				}
+			}
+		});
+		new Vue({
+			el:'.box3',
+			data:{},
+			methods:{
+				show:function (event) {
+					alert(event.keyCode);
+				}
+			}
+		});
+		new Vue({
+			el:'.box2',
+			data:{},
+			methods:{
+				show:function (event) {
+					alert(event.keyCode);
+				}
+			}
+		});
+		new Vue({
+			el:'.box1',
+			data:{},
+			methods:{
+				show:function () {
+					alert(1);
+				}
+			}
+		})
+	}
+</script>

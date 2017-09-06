@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="按钮" @click="get()">
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script src="js/vue-resource.js" type="text/javascript"></script>
+<script type="text/javascript">
+	window.onload=function () {
+		new Vue({
+			el:'body',
+			data:{},
+			methods:{
+				get:function () {
+					this.$http.get('aa.txt').then(function (argument) {
+						alert(argument.data);
+					}, function (argument) {
+						alert(argument.status);
+					})
+				}
+			}
+		})
+	}
+</script>

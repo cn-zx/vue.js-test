@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>style属性</title>
+</head>
+<body>
+	<div class="box">
+		<strong v-bind:style="{color:'red'}">我是文字...</strong>
+	</div>
+	<div class="box1">
+		<strong v-bind:style="[c,b]">我是文字1...</strong>
+	</div>
+	<div class="box2">
+		<strong v-bind:style="[a,b]">我是文字2...</strong>
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script type="text/javascript">
+	new Vue({
+		el:'.box',
+		data:{
+
+		}
+	});
+	new Vue({
+		el:'.box1',
+		data:{
+			c:{color:'red'},
+			b:{background:'blue'}
+		}
+	});
+	new Vue({
+		el:'.box2',
+		data:{
+			a:{
+				color:'red',
+				background:'gray'
+			},
+			b:{background:'blue'}
+		}
+	})
+</script>

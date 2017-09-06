@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤器</title>
+</head>
+<body>
+	<div class="box">
+		{{'welcome' | uppercase}}
+		<p>{{'WELcOME' | lowercase}}</p>
+		<p>{{'WELCOME dd' | lowercase|capitalize}}</p>
+		<p>{{12|currency}}</p>
+		<p>{{12| currency '¥'}}</p>
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script type="text/javascript">
+	new Vue({
+		el:'.box',
+		data:{
+
+		}
+	})
+</script>

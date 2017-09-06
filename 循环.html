@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环</title>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li v-for="index in arr">{{index}} <br> {{$index}}</li>
+		</ul>
+		<ul>
+			<li v-for="index in dictionary">
+				{{index}} <br> {{$index}} <br>{{$key}}
+			</li>
+		</ul>
+		<ul>
+			<li v-for="(k,v) in dictionary">
+				{{k}}:{{v}} <br> {{$index}} <br>{{$key}}
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script typr="text/javascript">
+	new Vue({
+		el:'.box',
+		data:{
+			arr:['one','two','three','four'],
+			dictionary:{
+				one:'onee',
+				two:'twoo',
+				three:'threee',
+				four:'fourr'
+			}
+		}
+	})
+</script>

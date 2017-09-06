@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>交互</title>
+</head>
+<body>
+	<div class="box">
+		<input type="button" value="按钮1" @click="get()">
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script src="js/vue-resource.js" type="text/javascript"></script>
+<script  type="text/javascript">
+	window.onload=function () {
+		new Vue({
+			el:'body',
+			data:{},
+			methods:{
+				get:function () {
+					this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{wd:'a'},{jsonp:'cb'}).then(function (argument) {
+						alert(argument.data.s);
+						alert(11);
+					},function (argument) {
+						alert(argument.status);
+						alert(22);
+					})
+				}
+			}
+		})
+	}
+</script>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+</head>
+<body>
+	<div class="box">
+		<input type="button" value="按钮" v-on:dblclick='add()'>
+		<br>
+		<ul>
+			<li v-for="value in arr">{{value}}</li>
+		</ul>
+	</div>
+	<div class="box1">
+		<input type="button" value="按钮1" v-on:contextmenu="show($event)">
+	</div>
+	<div class="box2">
+		<input type="button" value="按钮" v-on:contextmenu.prevent="show()">
+	</div>
+	<div class="box3" style="border: 1px solid red;width: 50px;">
+		<input type="button" value="按钮" @click="show($event)">
+	</div>
+	<div class="box4">
+		<input type="button" value="按钮" v-on:click="show(12,$event)">
+	</div>
+	<div class="box5" style="border: 1px solid red;">
+		<div v-on:click=show2($event)>
+			<input type="button" value="按钮" v-on:click="show($event)">
+		</div>
+	</div>
+	<div class="box6">
+		<div v-on:click="show2">
+			<input type="button" value="按钮" v-on:click.stop="show">
+		</div>
+	</div>
+	<div class="box7">
+		<input type="text" @keydown="show">
+	</div>
+	<div class="box8">
+		<input type="text" v-on:keydown="show($eve)">
+	</div>
+</body>
+</html>
+<script src="js/vue.js" type="text/javascript"></script>
+<script type="text/javascript">
+	window.onload=function () {
+		new Vue({
+			e;".box8",
+			data:{},
+			methods:{
+				show:function (argument) {
+					// body...
+				}
+			}
+		});
+		new Vue({
+			el:'.box7',
+			data:{},
+			methods:{
+				show:function () {
+					alert(1);
+				}
+			}
+		});
+		new Vue({
+			el:'.box6',
+			data:{},
+			methods:{
+				show:function () {
+					alert(1);
+				},
+				show2:function () {
+					alert(2);
+				}
+			}
+		})
+	
+	new Vue({
+		el:'.box5',
+		data:{},
+		methods:{
+			show:function (ev) {
+				alert(1);
+				// ev.cancelBubble=true;
+			},
+			show2:function (ev) {
+				alert(2);
+				ev.cancelBubble=true;
+			}
+		}
+	});
+	new Vue({
+		el:'.box',
+		data:{
+			arr:['apple','banana','orange','pear'],
+			json:{a:'apple',b:'banana',c:'orange',d:'pear'}
+		},
+		methods:{
+			show:function () {
+				alert(1);
+			}, 
+			add:function () {
+				this.arr.push('tomato');
+			}
+		}
+	});
+	new Vue({
+		el:'.box1',
+		data:{
+
+		},
+		methods:{
+			show:function (ev) {
+				console.log(1);
+				// alert(1);
+				ev.preventDefault();
+			}
+		}
+	});
+	new Vue({
+		el:'.box2',
+		data:{
+
+		},
+		methods:{
+			show:function () {
+				// alert(1);
+				console.log(1);
+			}
+		}
+	});
+	new Vue({
+		el:'.box3',
+		data:{
+
+		},
+		methods:{
+			show:function (argument) {
+				alert(argument.clientX);
+			}
+		}
+	});
+	new Vue({
+		el:'.box4',
+		data:{
+
+		},
+		methods:{
+			show:function (b,argument) {
+				alert(argument.clientX);
+				alert(b);
+			}
+		}
+	});
+	}
+</script>

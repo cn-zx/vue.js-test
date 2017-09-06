@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue指令</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+    	.box{
+    		border: 1px solid red;
+    	}
+    	input{
+    		border: 1px solid orange;
+    	}
+    </style>
+</head>
+<body>
+	<div class="box">
+		<select v-model="selected">
+			<option v-for="option in todos" v-bind:value="option.value">{{option.text}}</option>
+		</select>
+		<span>selected:{{selected}}</span>
+	</div>
+</body>
+</html>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload=function() {
+		
+		new Vue({
+			el:'.box',
+			data:{
+				selected:'A',
+				todos:[
+					{text:'one',value:'A'},
+					{text:'two',value:'B'},
+					{text:'three',value:'C'}
+				]
+			}
+		});
+	}
+</script>
